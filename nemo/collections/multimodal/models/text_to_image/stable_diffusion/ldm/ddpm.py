@@ -1919,7 +1919,7 @@ class MegatronLatentDiffusion(NLPAdapterModelMixin, MegatronBaseModel):
             return [x, *c_list]
 
         def fwd_output_and_loss_func(dataloader_iter, model):
-            batch, _, _ = next(dataloader_iter)
+            batch = next(dataloader_iter)
             batch = process_batch(batch)
             batch = [x.cuda(non_blocking=True) for x in batch]
             if len(self.conditioning_keys) == 0:
